@@ -69,10 +69,10 @@ class DATABASE_CONFIG {
 	public $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' => '172.17.0.4',
+		'host' => '172.17.0.2',
 		'login' => 'root',
 		'password' => 'root',
-		'database' => 'caderninho',
+		'database' => 'caderno',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
