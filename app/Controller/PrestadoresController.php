@@ -62,26 +62,48 @@ class PrestadoresController extends AppController
 
     public function edit($id = null) 
     {
-        if (!empty($this->request->data))
+        if (!$id) 
         {
+            throw new NotFoundException(__('Serviço inválido.'));
+        }
+
+        $prestador = $this->Prestadore->findById($id);
+        if (!$prestador)
+        {
+            throw new NotFoundException(__('Serviço inválido.'));
+        }
+
+        if ($this->request->is(array('post', 'put')))
+        {
+            $this->Prestadore->id = $id;
             if ($this->Prestadore->save($this->request->data)) 
             {
                 $this->Flash->success('Prestador alterado com sucesso.');
                 $this->redirect(array('action' => 'index'));
             } 
-            else
-            {
-                $fields = array('Prestadore.id', 'Prestadore.nome', 'Prestadore.telefone', 'Prestadore.email', 'Prestadore.foto');
-                $conditions = array('Prestadore.id' => $id);
-                $this->request->data = $this->Prestadore->find('first', compact('fields', 'conditions'));
-                // $this->request->data = $this->Prestadore->findById($id);
-            }
+            
+        }
+
+        if (!$this->request->data)
+        {
+            $this->request->data = $prestador;
         }
     }
 
     public function delete($id = null)
     {
-        $this->Prestadore->delete($id);
-        $this->redirect(array('action' => 'index'));
+        if ($this->Prestadore->delete($id)) {
+            $this->Flash->success(
+                __('O prestador com o id: %s foi excluído.', h($id))
+            );
+        } 
+        else 
+        {
+            $this->Flash->error(
+                __('Não foi possível excluir o prestador com id: %s.', h($id))
+            );
+        }
+    
+        return $this->redirect(array('action' => 'index'));
     }
 }
