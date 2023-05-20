@@ -1,42 +1,43 @@
 <div class="servicos index">
 	<h2><?php echo __('Serviços'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
-	<thead>
-	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('nome'); ?></th>
-			<th><?php echo $this->Paginator->sort('descrição'); ?></th>
-			<th><?php echo $this->Paginator->sort('preço'); ?></th>
-			<th class="actions"><?php echo __('Ações'); ?></th>
-	</tr>
-	</thead>
-	<tbody>
-	<?php foreach ($servicos as $servico): ?>
-	<tr>
-		<td><?php echo h($servico['Servico']['id']); ?>&nbsp;</td>
-		<td><?php echo h($servico['Servico']['nome']); ?>&nbsp;</td>
-		<td><?php echo h($servico['Servico']['descricao']); ?>&nbsp;</td>
-		<td><?php echo h($servico['Servico']['preco']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $servico['Servico']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Deletar'), array('action' => 'delete', $this->Form->value('Servico.id')), array('confirm' => __('Você tem certeza que deseja deletar o serviço # %s?', $this->Form->value('Prestadore.id')))); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</tbody>
+		<thead>
+			<tr>
+				<th><?php echo $this->Paginator->sort('id'); ?></th>
+				<th><?php echo $this->Paginator->sort('nome'); ?></th>
+				<th><?php echo $this->Paginator->sort('descrição'); ?></th>
+				<th><?php echo $this->Paginator->sort('preço'); ?></th>
+				<th class="actions"><?php echo __('Ações'); ?></th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach ($servicos as $servico) : ?>
+				<tr>
+					<td><?php echo h($servico['Servico']['id']); ?>&nbsp;</td>
+					<td><?php echo h($servico['Servico']['nome']); ?>&nbsp;</td>
+					<td><?php echo h($servico['Servico']['descricao']); ?>&nbsp;</td>
+					<td><?php echo h($servico['Servico']['preco']); ?>&nbsp;</td>
+					<td class="actions">
+						<?php echo $this->Html->link(__('Ver'), array('action' => 'view',  $servico['Servico']['id'])); ?>
+						<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $servico['Servico']['id'])); ?>
+						<?php echo $this->Form->postLink(__('Deletar'), array('action' => 'delete', $servico['Servico']['id']), array('confirm' => __('Você tem certeza que deseja deletar o prestador # %s?', $servico['Servico']['id']))); ?>
+					</td>
+				</tr>
+			<?php endforeach; ?>
+		</tbody>
 	</table>
 	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-		'format' => __('Página {:page} de {:pages}, com {:current} / {:count} cadastros')
-	));
-	?>	</p>
+		<?php
+		echo $this->Paginator->counter(array(
+			'format' => __('Página {:page} de {:pages}, com {:current} / {:count} cadastros')
+		));
+		?> </p>
 	<div class="paging">
-	<?php
+		<?php
 		echo $this->Paginator->prev('< ' . __('Anterior'), array(), null, array('class' => 'prev disabled'));
 		echo $this->Paginator->numbers(array('separator' => ''));
 		echo $this->Paginator->next(__('Próximo') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
+		?>
 	</div>
 </div>
 <div class="actions">
@@ -50,7 +51,7 @@
 
 
 
-    <!-- 
+<!-- 
 
     $detalhe = array();
     $column_name = array();

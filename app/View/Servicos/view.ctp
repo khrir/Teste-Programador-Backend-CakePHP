@@ -27,7 +27,7 @@
 	<h3><?php echo __('Ações'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Editar Serviço'), array('action' => 'edit', $servico['Servico']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Deletar'), array('action' => 'delete', $this->Form->value('Servico.id')), array('confirm' => __('Você tem certeza que deseja deletar o serviço # %s?', $this->Form->value('Prestadore.id')))); ?></li>
+        <li><?php echo $this->Form->postLink(__('Deletar'), array('action' => 'delete', $servico['Servico']['id']), array('confirm' => __('Você tem certeza que deseja deletar o prestador # %s?', $servico['Servico']['id']))); ?></li>
 		<li><?php echo $this->Html->link(__('Listar Serviços'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('Listar Prestadores'), array('controller' => 'prestadores', 'action' => 'index')); ?> </li>
 	</ul>
