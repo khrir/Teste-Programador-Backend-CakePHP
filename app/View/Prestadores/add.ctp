@@ -1,32 +1,22 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<div class="prestadores form">
+<?php echo $this->Form->create('Prestadore'); ?>
+	<fieldset>
+		<legend><?php echo __('Cadastrar Prestador'); ?></legend>
+	<?php
+		echo $this->Form->input('nome');
+		echo $this->Form->input('telefone');
+		echo $this->Form->input('email');
+		echo $this->Form->input('foto', array('type' => 'file'));
+		echo $this->Form->input('servicos_id');
+	?>
+	</fieldset>
+<?php echo $this->Form->end(__('Submit')); ?>
+</div>
+<div class="actions">
+	<h3><?php echo __('Ações'); ?></h3>
+	<ul>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-</head>
-
-<body>
-    <?php
-
-    $form = $this->Form->create(
-        'Prestadores',
-        array(
-            'enctype' => 'multipart/form-data',
-            'type' => 'post',
-        )
-    );
-    $form .= $this->Form->input('Prestadore.nome');
-    $form .= $this->Form->input('Prestadore.telefone');
-    $form .= $this->Form->input('Prestadore.email');
-    $form .= $this->Form->input('Prestadore.foto', ['type' => 'file']);
-    $form .= $this->Form->end('Gravar');
-
-    echo $form;
-
-    ?>
-</body>
-
-</html>
+		<li><?php echo $this->Html->link(__('Listar Prestadores'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('Listar Serviços'), array('controller' => 'servicos', 'action' => 'index')); ?> </li>
+	</ul>
+</div>

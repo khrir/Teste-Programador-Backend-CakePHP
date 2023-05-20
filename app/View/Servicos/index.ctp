@@ -1,18 +1,56 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<div class="servicos index">
+	<h2><?php echo __('Serviços'); ?></h2>
+	<table cellpadding="0" cellspacing="0">
+	<thead>
+	<tr>
+			<th><?php echo $this->Paginator->sort('id'); ?></th>
+			<th><?php echo $this->Paginator->sort('nome'); ?></th>
+			<th><?php echo $this->Paginator->sort('descrição'); ?></th>
+			<th><?php echo $this->Paginator->sort('preço'); ?></th>
+			<th class="actions"><?php echo __('Ações'); ?></th>
+	</tr>
+	</thead>
+	<tbody>
+	<?php foreach ($servicos as $servico): ?>
+	<tr>
+		<td><?php echo h($servico['Servico']['id']); ?>&nbsp;</td>
+		<td><?php echo h($servico['Servico']['nome']); ?>&nbsp;</td>
+		<td><?php echo h($servico['Servico']['descricao']); ?>&nbsp;</td>
+		<td><?php echo h($servico['Servico']['preco']); ?>&nbsp;</td>
+		<td class="actions">
+			<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $servico['Servico']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Deletar'), array('action' => 'delete', $this->Form->value('Servico.id')), array('confirm' => __('Você tem certeza que deseja deletar o serviço # %s?', $this->Form->value('Prestadore.id')))); ?>
+		</td>
+	</tr>
+<?php endforeach; ?>
+	</tbody>
+	</table>
+	<p>
+	<?php
+	echo $this->Paginator->counter(array(
+		'format' => __('Página {:page} de {:pages}, com {:current} / {:count} cadastros')
+	));
+	?>	</p>
+	<div class="paging">
+	<?php
+		echo $this->Paginator->prev('< ' . __('Anterior'), array(), null, array('class' => 'prev disabled'));
+		echo $this->Paginator->numbers(array('separator' => ''));
+		echo $this->Paginator->next(__('Próximo') . ' >', array(), null, array('class' => 'next disabled'));
+	?>
+	</div>
+</div>
+<div class="actions">
+	<h3><?php echo __('Ações'); ?></h3>
+	<ul>
+		<li><?php echo $this->Html->link(__('Listar Prestador'), array('controller' => 'prestadores', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Adicionar serviços'), array('controller' => 'servicos', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Upload serviços'), array('controller' => 'servicos', 'action' => 'upload')); ?> </li>
+	</ul>
+</div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-</head>
 
-<body>
-    <?php
 
-    echo $this->Html->link('Cadastrar', array('controller' => 'servicos', 'action' => 'add'));
-    echo $this->Html->link(' Upload', array('controller' => 'servicos', 'action' => 'upload'));
+    <!-- 
 
     $detalhe = array();
     $column_name = array();
@@ -25,7 +63,7 @@
         $detalhe[] = array(
             $servico['Servico']['id'],
             $this->Html->link($servico['Servico']['nome'], ['action' => 'view', $servico['Servico']['id']]),
-            $servico['Servico']['descricao'], 
+            $servico['Servico']['descricao'],
             $servico['Servico']['preco'],
             $editLink,
             $delLink
@@ -36,7 +74,4 @@
     $body = $this->Html->tableCells($detalhe);
     // $editButton = $this->Html->link()
     echo $this->Html->tag('table', $header . $body);
-    ?>
-</body>
-
-</html>
+    ?> -->
