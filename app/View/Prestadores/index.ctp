@@ -1,43 +1,55 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-</head>
-
-<body>
-    <?php
-
-    echo $this->Html->link('Cadastrar', array('controller' => 'prestadores', 'action' => 'add'));
-    
-    $detalhe = array();
-    $column_name = array();
-
-    $column_name = array_keys($prestadores[0]['Prestadore']);
-
-    foreach ($prestadores as $prestador) 
-    {
-        $editLink = $this->Html->link('Alterar', '/prestadores/edit/' . $prestador['Prestadore']['id']);
-        $delLink = $this->Html->link('Deletar', '/prestadores/delete/' . $prestador['Prestadore']['id']);
-        $detalhe[] = array(
-            $this->Html->link($prestador['Prestadore']['id'], ['action' => 'view', $prestador['Prestadore']['id']]),
-            $this->Html->link($prestador['Prestadore']['nome'], ['action' => 'view', $prestador['Prestadore']['id']]),
-            $this->Html->link($prestador['Prestadore']['telefone'], ['action' => 'view', $prestador['Prestadore']['id']]),
-            $this->Html->link($prestador['Prestadore']['email'], ['action' => 'view', $prestador['Prestadore']['id']]),
-            $this->Html->link($prestador['Prestadore']['foto'], ['action' => 'view', $prestador['Prestadore']['id']]),
-            $editLink,
-            $delLink
-        );
-    }
-
-    $header = $this->Html->tableHeaders($column_name);
-    $body = $this->Html->tableCells($detalhe);
-    // $editButton = $this->Html->link()
-    echo $this->Html->tag('table', $header . $body);
-    ?>
-</body>
-
-</html>
+<div class="prestadores index">
+	<h2><?php echo __('Prestadores'); ?></h2>
+	<table cellpadding="0" cellspacing="0">
+	<thead>
+	<tr>
+			<th><?php echo $this->Paginator->sort('id'); ?></th>
+			<th><?php echo $this->Paginator->sort('nome'); ?></th>
+			<th><?php echo $this->Paginator->sort('telefone'); ?></th>
+			<th><?php echo $this->Paginator->sort('email'); ?></th>
+			<th><?php echo $this->Paginator->sort('foto'); ?></th>
+			<th><?php echo $this->Paginator->sort('servicos_id'); ?></th>
+			<th class="actions"><?php echo __('Ações'); ?></th>
+	</tr>
+	</thead>
+	<tbody>
+	<?php foreach ($prestadores as $prestadore): ?>
+	<tr>
+		<td><?php echo h($prestadore['Prestadore']['id']); ?>&nbsp;</td>
+		<td><?php echo h($prestadore['Prestadore']['nome']); ?>&nbsp;</td>
+		<td><?php echo h($prestadore['Prestadore']['telefone']); ?>&nbsp;</td>
+		<td><?php echo h($prestadore['Prestadore']['email']); ?>&nbsp;</td>
+		<td><?php echo h($prestadore['Prestadore']['foto']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($prestadore['Servicos']['nome'], array('controller' => 'servicos', 'action' => 'view', $prestadore['Servicos']['id'])); ?>
+		</td>
+		<td class="actions">
+			<?php echo $this->Html->link(__('Ver'), array('action' => 'view', $prestadore['Prestadore']['id'])); ?>
+			<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $prestadore['Prestadore']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Deletar'), array('action' => 'delete', $prestadore['Prestadore']['id']), array('confirm' => __('Você tem certeza que deseja deletar o prestador # %s?', $prestadore['Prestadore']['id']))); ?>
+		</td>
+	</tr>
+<?php endforeach; ?>
+	</tbody>
+	</table>
+	<p>
+	<?php
+	echo $this->Paginator->counter(array(
+		'format' => __('Página {:page} de {:pages}, com {:current} / {:count} cadastros')
+	));
+	?>	</p>
+	<div class="paging">
+	<?php
+		echo $this->Paginator->prev('< ' . __('anterior'), array(), null, array('class' => 'prev disabled'));
+		echo $this->Paginator->numbers(array('separator' => ''));
+		echo $this->Paginator->next(__('posterior') . ' >', array(), null, array('class' => 'next disabled'));
+	?>
+	</div>
+</div>
+<div class="actions">
+	<h3><?php echo __('Ações'); ?></h3>
+	<ul>
+		<li><?php echo $this->Html->link(__('Cadastrar Prestador'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Listar Serviços'), array('controller' => 'servicos', 'action' => 'index')); ?> </li>
+	</ul>
+</div>

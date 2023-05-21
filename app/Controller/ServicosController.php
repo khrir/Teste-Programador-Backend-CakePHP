@@ -3,16 +3,37 @@
 App::uses('AppController', 'Controller');
 
 class ServicosController extends AppController
-{
-    public $helpers = array('Html','Form', 'Flash');
-    public $components = array('Flash');
+{  
+    /**
+     * Components
+     *
+     * @var array
+     */
 
-    public function index()
+    public $helpers = array('Html','Form', 'Flash');
+    public $components = array('Flash', 'Paginator');
+
+
+    /**
+     * index method
+     *
+     * @return void
+     */
+	public function index () {
+		$this->Servico->recursive = 0;
+		$this->set('servicos', $this->Paginator->paginate());
+	}
+
+    public function view ($id = null)
     {
-        $this->set('servicos', $this->paginate());
+        if (!$id) {
+            $this->Flash->set('Serviço não encontrado.', true);
+            $this->redirect(array('action' => 'index'));
+        }
+        $this->set('servico', $this->Servico->findById($id));
     }
 
-    public function add()
+    public function add ()
     {
         if (!empty($this->request->data)) {
             $this->Servico->create();
@@ -28,12 +49,12 @@ class ServicosController extends AppController
         }
     }
 
-    public function upload()
+    public function upload ()
     {
         if(!empty($this->request->data))
         {
-
-            $file = $this->request->data['Servicos']['csv']['tmp_name'];
+            
+            $file = $this->request->data['Servico']['csv']['tmp_name'];
             $handle = fopen($file, "r");
             $servicosArr = array();
 
@@ -61,7 +82,7 @@ class ServicosController extends AppController
         }
     }
 
-    public function edit($id = null)
+    public function edit ($id = null)
     {
         if (!$id) 
         {
@@ -90,7 +111,7 @@ class ServicosController extends AppController
         }
     }
 
-    public function delete($id = null)
+    public function delete ($id = null)
     {
         if ($this->Servico->delete($id))
         {
@@ -105,5 +126,3 @@ class ServicosController extends AppController
         return $this->redirect(array('action' => 'index'));
     }
 }
-
-?>

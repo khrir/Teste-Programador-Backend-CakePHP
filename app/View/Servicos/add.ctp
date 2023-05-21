@@ -1,32 +1,30 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<div class="servicos form">
+	<?php
+	echo $this->Form->create(
+		'Servico',
+		array(
+			'enctype' => 'multipart/form-data',
+			'type' => 'post',
+		)
+	);
+	?>
+	<fieldset>
+		<legend><?php echo __('Adicionar Serviço'); ?></legend>
+		<?php
+		echo $this->Form->input('nome');
+		echo $this->Form->input('descricao');
+		echo $this->Form->input('preco');
+		?>
+	</fieldset>
+	<?php echo $this->Form->end(__('Enviar')); ?>
+</div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-</head>
+<div class="actions">
+	<h3><?php echo __('Ações'); ?></h3>
+	<ul>
 
-<body>
-    <?php
-
-    $form = $this->Form->create(
-        'Servicos',
-        array(
-            'enctype' => 'multipart/form-data',
-            'type' => 'post',
-        )
-    );
-    $form .= $this->Form->hidden('Servico.id'); 
-    $form .= $this->Form->input('Servico.nome');
-    $form .= $this->Form->input('Servico.descricao');
-    $form .= $this->Form->input('Servico.preco');
-    $form .= $this->Form->end('Gravar');
-
-    echo $form;
-
-    ?>
-</body>
-
-</html>
+		<li><?php echo $this->Html->link(__('Listar Prestadores'), array('controller' => 'prestadores','action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('Listar Serviços'), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Upload Serviço'), array('action' => 'upload')); ?> </li>
+	</ul>
+</div>
