@@ -1,16 +1,22 @@
 <div class="prestadores form">
-<?php echo $this->Form->create('Prestadore'); ?>
+	<?php echo $this->Form->create(
+		'Prestadore',
+		array(
+			'enctype' => 'multipart/form-data',
+			'type' => 'post',
+		)
+	); ?>
 	<fieldset>
 		<legend><?php echo __('Cadastrar Prestador'); ?></legend>
-	<?php
+		<?php
 		echo $this->Form->input('nome');
 		echo $this->Form->input('telefone');
 		echo $this->Form->input('email');
 		echo $this->Form->input('foto', array('type' => 'file'));
 		echo $this->Form->input('servicos_id');
-	?>
+		?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+	<?php echo $this->Form->end(__('Submit')); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Ações'); ?></h3>

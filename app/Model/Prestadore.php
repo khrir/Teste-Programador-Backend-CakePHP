@@ -50,18 +50,15 @@ class Prestadore extends AppModel {
 		),
 	);
 
-/**
- * belongsTo associations
- *
- * @var array
- */
+	/**
+	 * belongsTo associations
+	 *
+	 * @var array
+	 */
 	public $belongsTo = array(
 		'Servicos' => array(
 			'className' => 'Servicos',
 			'foreignKey' => 'servicos_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
 		)
 	);
 }

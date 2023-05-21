@@ -11,14 +11,14 @@ class PrestadoresController extends AppController
     public $helpers = array('Html', 'Form', 'Flash');
     public $components = array('Flash', 'Paginator');
 
-    public function index ()
+    public function index()
     {
         $this->Prestadore->recursive = 0;
-        $this->set('prestadores', $this->Paginator->paginate());
+        $this->set('prestadores', $this->Paginator->paginate($this->Prestadore));
     }
 
 
-    public function view ($id = null)
+    public function view($id = null)
     {
         if (!$id) {
             $this->Flash->set('Prestador não encontrado.', true);
@@ -27,7 +27,7 @@ class PrestadoresController extends AppController
         $this->set('prestadore', $this->Prestadore->findById($id));
     }
 
-    public function add ()
+    public function add()
     {
         if ($this->request->is('post')) {
             if (!empty($this->request->data)) {
@@ -58,7 +58,7 @@ class PrestadoresController extends AppController
         $this->set('servicos', $servicos);
     }
 
-    public function edit ($id = null)
+    public function edit($id = null)
     {
         if (!$id) {
             throw new NotFoundException(__('Serviço inválido.'));
@@ -82,16 +82,13 @@ class PrestadoresController extends AppController
         }
     }
 
-    public function delete ($id = null)
+    public function delete($id = null)
     {
-        if ($this->Prestadore->delete($id)) 
-        {
+        if ($this->Prestadore->delete($id)) {
             $this->Flash->success(
                 __('O prestador com o id: %s foi excluído.', h($id))
             );
-        } 
-        else 
-        {
+        } else {
             $this->Flash->error(
                 __('Não foi possível excluir o prestador com id: %s.', h($id))
             );

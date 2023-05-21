@@ -4,13 +4,14 @@ App::uses('AppModel', 'Model');
  * Servico Model
  *
  */
-class Servico extends AppModel {
+class Servico extends AppModel
+{
 
-/**
- * Validation rules
- *
- * @var array
- */
+	/**
+	 * Validation rules
+	 *
+	 * @var array
+	 */
 	public $validate = array(
 		'nome' => array(
 			'notBlank' => array(

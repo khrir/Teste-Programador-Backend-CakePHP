@@ -21,7 +21,7 @@
 		<td><?php echo h($prestadore['Prestadore']['email']); ?>&nbsp;</td>
 		<td><?php echo h($prestadore['Prestadore']['foto']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($prestadore['Servicos']['id'], array('controller' => 'servicos', 'action' => 'view', $prestadore['Servicos']['id'])); ?>
+			<?php echo $this->Html->link($prestadore['Servicos']['nome'], array('controller' => 'servicos', 'action' => 'view', $prestadore['Servicos']['id'])); ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('Ver'), array('action' => 'view', $prestadore['Prestadore']['id'])); ?>
