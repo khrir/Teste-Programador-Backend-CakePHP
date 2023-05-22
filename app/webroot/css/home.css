@@ -1,0 +1,49 @@
+/*  */
+.header {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 10px;
+    background-color: #fff;
+    border-bottom: inset;
+}
+
+.logo {
+	height: 70px;
+	width: 70x;
+	margin-left: 10px;
+}
+
+.menu {
+	display: flex;
+}
+  
+.menu li {
+	margin-left: 10px;
+    list-style: none;
+}
+  
+.menu li a {
+	display: block;
+	padding: 10px;
+    text-decoration: none;
+}
+
+.container {
+    background-image: url('/img/stack-overflow.webp');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 900px 450px;
+    background-attachment: fixed;
+    height: 70vh;
+
+}
+
+.access {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    clear: both;
+}

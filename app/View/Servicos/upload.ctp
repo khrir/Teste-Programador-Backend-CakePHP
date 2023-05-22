@@ -15,6 +15,7 @@
 		?>
 	</fieldset>
 	<?php echo $this->Form->end(__('Enviar')); ?>
+	<!-- TODO: função para mostrar os dados -->
 </div>
 
 <div class="actions">
