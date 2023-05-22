@@ -8,7 +8,7 @@ class PrestadoresController extends AppController
      *
      * @var array
      */
-    public $helpers = array('Html', 'Form', 'Flash');
+    public $helpers = array('Html', 'Form', 'Flash', 'Pdf.Document', 'Pdf.Report');
     public $components = array('Flash', 'Paginator');
 
     public function index()
@@ -95,5 +95,13 @@ class PrestadoresController extends AppController
         }
 
         return $this->redirect(array('action' => 'index'));
+    }
+
+    public function report()
+    {
+        $this->layout = false;
+        $this->response->type('pdf');
+        $prestadores = $this->Prestadore->find('all');
+        $this->set('prestadores', $prestadores);
     }
 }

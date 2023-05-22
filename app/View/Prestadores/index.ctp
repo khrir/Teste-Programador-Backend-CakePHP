@@ -50,6 +50,7 @@
 	<h3><?php echo __('Ações'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Cadastrar Prestador'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Imprimir Prestadores'), array('action' => 'report')); ?> </li>
 		<li><?php echo $this->Html->link(__('Listar Serviços'), array('controller' => 'servicos', 'action' => 'index')); ?> </li>
 	</ul>
 </div>

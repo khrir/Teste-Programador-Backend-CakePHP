@@ -1,7 +1,5 @@
 <div class="servicos form">
 	<?php
-	$viewButton = $this->Html->link('Visualizar', array('class' => 'btn btn-success float-right', 'view' => '#content'));
-
 	echo $this->Form->create(
 		'Servico',
 		array(
@@ -17,7 +15,6 @@
 		?>
 	</fieldset>
 	<?php echo $this->Form->end(__('Enviar')); ?>
-	<?php echo $viewButton; ?>
 	<!-- TODO: função para mostrar os dados -->
 </div>
 
