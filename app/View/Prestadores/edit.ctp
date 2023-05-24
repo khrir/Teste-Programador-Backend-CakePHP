@@ -7,7 +7,7 @@
 		echo $this->Form->input('nome');
 		echo $this->Form->input('telefone');
 		echo $this->Form->input('email');
-		echo $this->Form->input('foto');
+		echo $this->Form->hidden('foto');
 		echo $this->Form->input('servicos_id');
 	?>
 	</fieldset>

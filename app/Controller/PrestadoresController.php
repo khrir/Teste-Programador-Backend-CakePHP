@@ -54,7 +54,7 @@ class PrestadoresController extends AppController
                 }
             }
         }
-        $servicos = $this->Prestadore->Servicos->find('list');
+        $servicos = $this->Prestadore->Servicos->find('list', ['fields' => ['id', 'nome']]);
         $this->set('servicos', $servicos);
     }
 
@@ -80,6 +80,9 @@ class PrestadoresController extends AppController
         if (!$this->request->data) {
             $this->request->data = $prestador;
         }
+
+        $servicos = $this->Prestadore->Servicos->find('list', ['fields' => ['id', 'nome']]);
+        $this->set('servicos', $servicos);
     }
 
     public function delete($id = null)
