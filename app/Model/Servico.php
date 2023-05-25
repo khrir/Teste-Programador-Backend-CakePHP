@@ -6,7 +6,7 @@ App::uses('AppModel', 'Model');
  */
 class Servico extends AppModel
 {
-
+	public $displayField = 'nome';
 	/**
 	 * Validation rules
 	 *
@@ -19,6 +19,10 @@ class Servico extends AppModel
 				//'message' => 'Your custom message here',
 				//'required' => false,
 
+			),
+			'isUnique' => array(
+				'rule' => array('isUnique'),
+				'message' => 'O serviço já existe no banco.',
 			),
 		),
 		'descricao' => array(
@@ -34,6 +38,21 @@ class Servico extends AppModel
 				//'message' => 'Your custom message here',
 				//'required' => false,
 			),
+		),
+	);
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'PrestadoresHasServico' => array(
+			'className' => 'PrestadoresHasServico',
+			'foreignKey' => 'servico_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		),
 	);
 }

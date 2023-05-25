@@ -72,7 +72,7 @@ class DATABASE_CONFIG {
 		'host' => '172.17.0.2',
 		'login' => 'root',
 		'password' => 'root',
-		'database' => 'caderno',
+		'database' => 'caderno_aditivado',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);

@@ -8,7 +8,6 @@
 			<th><?php echo $this->Paginator->sort('telefone'); ?></th>
 			<th><?php echo $this->Paginator->sort('email'); ?></th>
 			<th><?php echo $this->Paginator->sort('foto'); ?></th>
-			<th><?php echo $this->Paginator->sort('servicos_id'); ?></th>
 			<th class="actions"><?php echo __('Ações'); ?></th>
 	</tr>
 	</thead>
@@ -20,9 +19,6 @@
 		<td><?php echo h($prestadore['Prestadore']['telefone']); ?>&nbsp;</td>
 		<td><?php echo h($prestadore['Prestadore']['email']); ?>&nbsp;</td>
 		<td><?php echo h($prestadore['Prestadore']['foto']); ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($prestadore['Servicos']['nome'], array('controller' => 'servicos', 'action' => 'view', $prestadore['Servicos']['id'])); ?>
-		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('Ver'), array('action' => 'view', $prestadore['Prestadore']['id'])); ?>
 			<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $prestadore['Prestadore']['id'])); ?>
@@ -52,5 +48,7 @@
 		<li><?php echo $this->Html->link(__('Cadastrar Prestador'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('Imprimir Prestadores'), array('action' => 'report')); ?> </li>
 		<li><?php echo $this->Html->link(__('Listar Serviços'), array('controller' => 'servicos', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Serviços ao Prestador'), array('controller' => 'prestadores_has_servicos', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Relação com Serviços'), array('controller' => 'prestadores_has_servicos', 'action' => 'index')); ?> </li>
 	</ul>
 </div>

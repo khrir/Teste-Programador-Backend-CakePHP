@@ -30,7 +30,13 @@ class ServicosController extends AppController
             $this->Flash->set('Serviço não encontrado.', true);
             $this->redirect(array('action' => 'index'));
         }
-        $this->set('servico', $this->Servico->findById($id));
+        $this->set('servico', $this->Servico->find(
+            'first',
+            [
+                'conditions' => ['Servico.id' => $id],
+                'recursive' => 2
+            ]
+    ));
     }
 
     public function add ()
