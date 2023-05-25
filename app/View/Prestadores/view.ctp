@@ -37,7 +37,7 @@
 	<h3><?php echo __('Ações'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Editar Prestador'), array('action' => 'edit', $prestadore['Prestadore']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Deletar'), array('action' => 'delete', $this->Form->value('Prestadore.id')), array('confirm' => __('Você tem certeza que deseja deletar o prestador # %s?', $this->Form->value('Prestadore.id')))); ?></li>
+		<li><?php echo $this->Form->postLink(__('Deletar'), array('action' => 'delete', $prestadore['Prestadore']['id']), array('confirm' => __('Você tem certeza que deseja deletar o prestador # %s?', $prestadore['Prestadore']['id']))); ?></li>
 		<li><?php echo $this->Html->link(__('Listar prestadores'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('Cadastrar Prestador'), array('action' => 'add')); ?> </li>
 	</ul>
@@ -67,7 +67,7 @@
 					<td class="actions">
 						<?php echo $this->Html->link(__('Ver', true), array('controller' => 'prestadoresHasServicos', 'action' => 'view', $prestadoresHasServico['id'])) ?>
 						<?php echo $this->Html->link(__('Editar', true), array('controller' => 'prestadoresHasServicos', 'action' => 'edit', $prestadoresHasServico['id'])) ?>
-						<?php echo $this->Form->postLink(__('Deletar'), array('controller' => 'prestadoresHasServicos', 'action' => 'delete', $prestadoresHasServico['PrestadoresHasServico']['id']), array('confirm' => __('Você tem certeza que deseja deletar a relação # %s?', $prestadoresHasServico['PrestadoresHasServico']['id']))); ?>
+						<?php echo $this->Form->postLink(__('Deletar'), array('controller' => 'prestadoresHasServicos', 'action' => 'delete', $prestadoresHasServico['id']), array('confirm' => __('Você tem certeza que deseja deletar a relação # %s?', $prestadoresHasServico['id']))); ?>
 					</td>
 				</tr>
 			<?php endforeach; ?>

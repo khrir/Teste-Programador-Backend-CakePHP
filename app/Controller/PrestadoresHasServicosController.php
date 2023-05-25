@@ -49,10 +49,10 @@ class PrestadoresHasServicosController extends AppController {
 		if ($this->request->is('post')) {
 			$this->PrestadoresHasServico->create();
 			if ($this->PrestadoresHasServico->save($this->request->data)) {
-				$this->Flash->success(__('The prestadores has servico has been saved.'));
+				$this->Flash->success(__('A relação foi salva com sucesso.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Flash->error(__('The prestadores has servico could not be saved. Please, try again.'));
+				$this->Flash->error(__('A relação não foi salva.'));
 			}
 		}
 		$prestadores = $this->PrestadoresHasServico->Prestadore->find('list');
@@ -99,15 +99,20 @@ class PrestadoresHasServicosController extends AppController {
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
-		if (!$this->PrestadoresHasServico->exists($id)) {
-			throw new NotFoundException(__('Invalid prestadores has servico'));
+	public function delete($id = null) 
+	{
+		if (!$this->PrestadoresHasServico->exists($id)) 
+		{
+			throw new NotFoundException(__('Id inválido'));
 		}
 		$this->request->allowMethod('post', 'delete');
-		if ($this->PrestadoresHasServico->delete($id)) {
-			$this->Flash->success(__('The prestadores has servico has been deleted.'));
-		} else {
-			$this->Flash->error(__('The prestadores has servico could not be deleted. Please, try again.'));
+		if ($this->PrestadoresHasServico->delete($id)) 
+		{
+			$this->Flash->success(__('O prestador foi deletado com sucesso.'));
+		} 
+		else 
+		{
+			$this->Flash->error(__('O prestador não foi deletado.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

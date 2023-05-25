@@ -57,7 +57,7 @@
 					<td class="actions">
 						<?php echo $this->Html->link(__('Ver', true), array('controller' => 'prestadoresHasServicos', 'action' => 'view', $prestadoresHasServico['id'])) ?>
 						<?php echo $this->Html->link(__('Editar', true), array('controller' => 'prestadoresHasServicos', 'action' => 'edit', $prestadoresHasServico['id'])) ?>
-						<?php echo $this->Form->postLink(__('Deletar'), array('controller' => 'prestadoresHasServicos', 'action' => 'delete', $prestadoresHasServico['PrestadoresHasServico']['id']), array('confirm' => __('Você tem certeza que deseja deletar a relação # %s?', $prestadoresHasServico['PrestadoresHasServico']['id']))); ?>
+						<?php echo $this->Form->postLink(__('Deletar'), array('controller' => 'prestadoresHasServicos', 'action' => 'delete', $prestadoresHasServico['id']), array('confirm' => __('Você tem certeza que deseja deletar a relação # %s?', $prestadoresHasServico['id']))); ?>
 					</td>
 				</tr>
 			<?php endforeach; ?>
