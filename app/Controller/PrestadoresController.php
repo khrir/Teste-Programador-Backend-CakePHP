@@ -1,6 +1,10 @@
 <?php
 App::uses('AppController', 'Controller');
 
+/**
+ * @property Prestadore Prestadore
+ */
+
 class PrestadoresController extends AppController
 {
     /**
@@ -24,7 +28,13 @@ class PrestadoresController extends AppController
             $this->Flash->set('Prestador não encontrado.', true);
             $this->redirect(array('action' => 'index'));
         }
-        $this->set('prestadore', $this->Prestadore->findById($id));
+        $this->set('prestadore', $this->Prestadore->find(
+            'first',
+            [
+                'conditions' => ['Prestadore.id' => $id],
+                'recursive' => 2
+            ]
+        ));
     }
 
     public function add()
@@ -42,7 +52,6 @@ class PrestadoresController extends AppController
                     $prestador['telefone'] = $this->request->data['Prestadore']['telefone'];
                     $prestador['email'] = $this->request->data['Prestadore']['email'];
                     $prestador['foto'] = $url;
-                    $prestador['servicos_id'] = $this->request->data['Prestadore']['servicos_id'];
 
                     if ($this->Prestadore->save($prestador)) {
                         $this->Flash->success(_('Prestador cadastrado com sucesso.'));
@@ -54,8 +63,6 @@ class PrestadoresController extends AppController
                 }
             }
         }
-        $servicos = $this->Prestadore->Servicos->find('list');
-        $this->set('servicos', $servicos);
     }
 
     public function edit($id = null)

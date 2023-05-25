@@ -5,19 +5,24 @@ App::uses('AppModel', 'Model');
  *
  * @property Servicos $Servicos
  */
-class Prestadore extends AppModel {
-
-/**
- * Validation rules
- *
- * @var array
- */
+class Prestadore extends AppModel
+{
+	public $displayField = 'nome';
+	/**
+	 * Validation rules
+	 *
+	 * @var array
+	 */
 	public $validate = array(
 		'nome' => array(
 			'notBlank' => array(
 				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'required' => false,
+			),
+			'isUnique' => array(
+				'rule' => array('isUnique'),
+				'message' => 'O prestador já existe no banco.',
 			),
 		),
 		'telefone' => array(
@@ -26,12 +31,20 @@ class Prestadore extends AppModel {
 				//'message' => 'Your custom message here',
 				//'required' => false,
 			),
+			'isUnique' => array(
+				'rule' => array('isUnique'),
+				'message' => 'Informe outro número.',
+			),
 		),
 		'email' => array(
 			'email' => array(
 				'rule' => array('email'),
 				//'message' => 'Your custom message here',
 				//'required' => false,
+			),
+			'isUnique' => array(
+				'rule' => array('isUnique'),
+				'message' => 'Informe outro e-mail.',
 			),
 		),
 		'foto' => array(
@@ -41,24 +54,20 @@ class Prestadore extends AppModel {
 				//'required' => false,
 			),
 		),
-		'servicos_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'required' => false,
-			),
-		),
 	);
-
 	/**
-	 * belongsTo associations
+	 * hasMany associations
 	 *
 	 * @var array
 	 */
-	public $belongsTo = array(
-		'Servicos' => array(
-			'className' => 'Servicos',
-			'foreignKey' => 'servicos_id',
-		)
+	public $hasMany = array(
+		'PrestadoresHasServico' => array(
+			'className' => 'PrestadoresHasServico',
+			'foreignKey' => 'prestadore_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
 	);
 }

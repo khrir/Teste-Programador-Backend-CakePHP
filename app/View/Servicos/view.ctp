@@ -32,3 +32,35 @@
 		<li><?php echo $this->Html->link(__('Listar Prestadores'), array('controller' => 'prestadores', 'action' => 'index')); ?> </li>
 	</ul>
 </div>
+<div class="related">
+	<h3><?php echo (__('Prestadores Relacionados')); ?></h3>
+	<?php if (!empty($servico['PrestadoresHasServico'])) : ?>
+		<table>
+			<tr>
+				<th><?php echo __('Id'); ?></th>
+				<th><?php echo __('Prestador'); ?></th>
+				<th class="actions"><?php echo __('Ações'); ?></th>
+			</tr>
+			<?php
+			$i = 0;
+			
+			foreach ($servico['PrestadoresHasServico'] as $prestadoresHasServico) :
+				$class = null;
+				if ($i++ % 2 == 0) {
+					$class = ' class="altrow"';
+				}
+
+			?>
+				<tr><?php echo $class; ?>
+					<td><?php echo $prestadoresHasServico['Prestadore']['id']?></td>
+					<td><?php echo $prestadoresHasServico['Prestadore']['nome']; ?></td>
+					<td class="actions">
+						<?php echo $this->Html->link(__('Ver', true), array('controller' => 'prestadoresHasServicos', 'action' => 'view', $prestadoresHasServico['id'])) ?>
+						<?php echo $this->Html->link(__('Editar', true), array('controller' => 'prestadoresHasServicos', 'action' => 'edit', $prestadoresHasServico['id'])) ?>
+						<?php echo $this->Form->postLink(__('Deletar'), array('controller' => 'prestadoresHasServicos', 'action' => 'delete', $prestadoresHasServico['id']), array('confirm' => __('Você tem certeza que deseja deletar a relação # %s?', $prestadoresHasServico['id']))); ?>
+					</td>
+				</tr>
+			<?php endforeach; ?>
+		</table>
+	<?php endif; ?>
+</div>

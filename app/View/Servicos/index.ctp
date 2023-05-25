@@ -46,6 +46,7 @@
 		<li><?php echo $this->Html->link(__('Listar Prestador'), array('controller' => 'prestadores', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('Adicionar serviços'), array('controller' => 'servicos', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Upload serviços'), array('controller' => 'servicos', 'action' => 'upload')); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Relação com Prestadores'), array('controller' => 'prestadores_has_servicos', 'action' => 'index')); ?> </li>
 	</ul>
 </div>
 

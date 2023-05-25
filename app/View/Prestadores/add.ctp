@@ -13,7 +13,6 @@
 		echo $this->Form->input('telefone');
 		echo $this->Form->input('email');
 		echo $this->Form->input('foto', array('type' => 'file'));
-		echo $this->Form->input('servicos_id');
 		?>
 	</fieldset>
 	<?php echo $this->Form->end(__('Submit')); ?>
